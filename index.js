@@ -1,5 +1,5 @@
 const { Keystone } = require('@keystonejs/keystone');
-const { Text } = require('@keystonejs/fields');
+const { Text, DateTime } = require('@keystonejs/fields');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { NuxtApp } = require('@keystonejs/app-nuxt');
@@ -17,6 +17,10 @@ keystone.createList('Todo', {
   schemaDoc: 'A list of things which need to be done',
   fields: {
     name: { type: Text, schemaDoc: 'This is the thing you need to do' },
+    date: { 
+      type: DateTime,
+      format: 'dd/MM/yyyy'
+    }
   },
 });
 
