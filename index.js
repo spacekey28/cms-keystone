@@ -1,6 +1,5 @@
 const { Keystone } = require('@keystonejs/keystone');
 const { Text, DateTime } = require('@keystonejs/fields');
-const { Content } = require('@keystonejs/fields-content');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { NuxtApp } = require('@keystonejs/app-nuxt');
@@ -21,17 +20,6 @@ keystone.createList('Todo', {
     date: { 
       type: DateTime,
       format: 'dd/MM/yyyy'
-    },
-    body: {
-      type: Content,
-      blocks: [
-        Content.blocks.blockquote,
-        Content.blocks.image,
-        Content.blocks.link,
-        Content.blocks.orderedList,
-        Content.blocks.unorderedList,
-        Content.blocks.heading,
-      ],
     },
   },
 });

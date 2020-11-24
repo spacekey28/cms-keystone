@@ -3,7 +3,6 @@
     "name": "index",
     "path": "/",
     "component": "/Users/peterson/Work/keystone/cms-blogsite/src/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_033fff34"
+    "chunkName": "pages/index"
   }
 ]
