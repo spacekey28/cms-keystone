@@ -1,8 +1,16 @@
 [
   {
+    "name": "about",
+    "path": "/about",
+    "component": "/Users/peterson/Work/keystone/cms-blogsite/src/pages/about.vue",
+    "chunkName": "pages/about",
+    "_name": "_42afb4be"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/Users/peterson/Work/keystone/cms-blogsite/src/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_033fff34"
   }
 ]
