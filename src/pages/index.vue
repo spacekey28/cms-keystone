@@ -2,13 +2,19 @@
   <div class="app">
     <h1 class="main-heading">Welcome to Keystone 5!</h1>
     <p class="intro-text">
-      Here's a simple
-      <a href="https://nuxtjs.org">NuxtJS</a> demo app that lets you add/remove todo items. Create a few entries, then go
-      check them out from your
       <a
         href="/admin"
       >Keystone 5 Admin UI</a>!
     </p>
+    <hr class="divider" />
+    <ul>
+      <li v-for="pizzaOrder in pizzaOrders" :key="pizzaOrder.Order_ID">
+        {{ pizzaOrder.Table_No }}
+        {{ pizzaOrder.Size }}
+        {{ pizzaOrder.Flavor }}
+        {{ pizzaOrder.Crust }}
+      </li>
+    </ul>
     <hr class="divider" />
     <div class="form-wrapper">
       <h2 class="app-heading">To-Do List</h2>
@@ -115,6 +121,11 @@ export default {
     return {
       todos: data.allTodos,
     };
+  },
+
+  async asyncData({ $http }) {
+    const pizzaOrders = await $http.$get('https://order-pizza-api.herokuapp.com/api/orders')
+    return { pizzaOrders }
   },
 
   methods: {
