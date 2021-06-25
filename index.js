@@ -32,6 +32,7 @@ module.exports = {
     new NuxtApp({
       srcDir: 'src',
       buildDir: 'dist',
+      modules: ['@nuxt/http'],
     }),
   ],
 };

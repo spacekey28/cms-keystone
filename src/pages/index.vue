@@ -7,18 +7,9 @@
       >Keystone 5 Admin UI</a>!
     </p>
     <hr class="divider" />
-    <ul>
-      <li v-for="pizzaOrder in pizzaOrders" :key="pizzaOrder.Order_ID">
-        {{ pizzaOrder.Table_No }}
-        {{ pizzaOrder.Size }}
-        {{ pizzaOrder.Flavor }}
-        {{ pizzaOrder.Crust }}
-      </li>
-    </ul>
-    <hr class="divider" />
     <div class="form-wrapper">
       <h2 class="app-heading">To-Do List</h2>
-
+        <h1>{{pizzaOrders}}</h1>
       <!-- Add todo form -->
       <div>
         <form @submit.prevent="addTodo">
@@ -122,12 +113,6 @@ export default {
       todos: data.allTodos,
     };
   },
-
-  async asyncData({ $http }) {
-    const pizzaOrders = await $http.$get('https://order-pizza-api.herokuapp.com/api/orders')
-    return { pizzaOrders }
-  },
-
   methods: {
     async getTodos() {
       const { data } = await graphql(GET_TODOS);
@@ -149,6 +134,11 @@ export default {
       await graphql(REMOVE_TODO, { id });
       // Update the todo list
       this.getTodos();
+    },
+
+    async asyncData({ $http }) {
+        const pizzaOrders = await $http.$get('https://order-pizza-api.herokuapp.com/api/orders')
+        return pizzaOrders;
     },
   },
 };

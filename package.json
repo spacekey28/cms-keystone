@@ -23,6 +23,7 @@
     "@keystonejs/app-nuxt": "^5.1.6",
     "@keystonejs/fields": "^20.0.0",
     "@keystonejs/keystone": "^17.1.1",
+    "@nuxt/http": "^0.6.4",
     "core-js": "^2.6.5",
     "cross-env": "^7.0.2",
     "express": "^4.17.1",
