@@ -33,6 +33,9 @@ module.exports = {
       srcDir: 'src',
       buildDir: 'dist',
       modules: ['@nuxt/http'],
+      http: {
+        https: true
+      }
     }),
   ],
 };

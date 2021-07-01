@@ -9,7 +9,7 @@
     <hr class="divider" />
     <div class="form-wrapper">
       <h2 class="app-heading">To-Do List</h2>
-        <h1>{{pizzaOrders}}</h1>
+      <button @click="getPizzas(this.$http)" class="orderBtn">Order Pizzas</button>
       <!-- Add todo form -->
       <div>
         <form @submit.prevent="addTodo">
@@ -136,8 +136,9 @@ export default {
       this.getTodos();
     },
 
-    async asyncData({ $http }) {
-        const pizzaOrders = await $http.$get('https://order-pizza-api.herokuapp.com/api/orders')
+    async getPizzas({ $http }) {
+        const pizzaOrders = await this.$http.$get('https://order-pizza-api.herokuapp.com/api/orders');
+        console.log("PIZZAS:", pizzaOrders);
         return pizzaOrders;
     },
   },
