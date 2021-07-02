@@ -9,7 +9,8 @@
     <hr class="divider" />
     <div class="form-wrapper">
       <h2 class="app-heading">To-Do List</h2>
-      <button @click="getPizzas(this.$http)" class="orderBtn">Order Pizzas</button>
+      <button class="orderBtn">Order Pizzas</button>
+      <h2>{{ pizzaOrders }}</h2>
       <!-- Add todo form -->
       <div>
         <form @submit.prevent="addTodo">
@@ -109,8 +110,12 @@ export default {
   // Get the todo items on server side
   async asyncData() {
     const { data } = await graphql(GET_TODOS);
+    const pizzaOrders = await $http.$get('https://order-pizza-api.herokuapp.com/api/orders');
+    console.log("PIZZAS:", pizzaOrders);
+
     return {
       todos: data.allTodos,
+      pizzaOrders,
     };
   },
   methods: {
@@ -134,12 +139,6 @@ export default {
       await graphql(REMOVE_TODO, { id });
       // Update the todo list
       this.getTodos();
-    },
-
-    async getPizzas({ $http }) {
-        const pizzaOrders = await this.$http.$get('https://order-pizza-api.herokuapp.com/api/orders');
-        console.log("PIZZAS:", pizzaOrders);
-        return pizzaOrders;
     },
   },
 };
